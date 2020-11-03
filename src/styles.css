@@ -9,10 +9,9 @@ html {
 }
 
 :root {
-  --blue: #004bd6;
-  --orange: #D68900;
-  --orange-dark: #cc7100;
-  --white: #f8fafb;
+  --amber: #ffb300;
+  --light: #ffe97d;
+  --dark-amber: #c56000;
   --red: rgb(190, 50, 50);
   --shadow: 2px 2px 14px -3px #0007;
   --header-height: 3rem;
@@ -26,6 +25,16 @@ body {
   background-color: var(--white);
   overflow-x: hidden;
   font-weight: 300;
+}
+
+.material-icons {
+  font-size: 1em!important;
+  line-height: unset!important;
+}
+
+.mat-icon {
+  width: unset!important;
+  height: unset!important;
 }
 
 a, a:hover {
@@ -67,9 +76,8 @@ img {
 
 @media screen and (max-width: 500px){
   html{
-      font-size: 13px;
+      font-size: 14px;
   }
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Titillium Web', sans-serif; }
-h1, h2, h3, h4, h5, h6 { font-family: 'Open Sans', sans-serif; }
