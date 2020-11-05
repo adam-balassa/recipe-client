@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'http://recipe-server-spring.herokuapp.com'
+  api: 'https://recipe-server-spring.herokuapp.com'
 };
