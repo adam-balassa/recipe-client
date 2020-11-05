@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Recipe } from '../model/model';
+import { ApiService } from '../service/api.service';
 
 @Component({
   selector: 'app-recipe-details',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipeDetailsComponent implements OnInit {
 
-  constructor() { }
+  recipe: Recipe;
+
+  constructor(private api: ApiService, private link: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.link.params.subscribe(params => {
+      const id = params.id;
+      this.api.getRecipe(id).subscribe(recipe => this.recipe = recipe);
+    });
   }
 
   decreaseQuantity() {
@@ -17,7 +26,7 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   increaseQuantity() {
-    
+
   }
 
 }

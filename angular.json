@@ -68,6 +68,7 @@
           },
           "configurations": {
             "production": {
+              "proxyConfig": "proxy.prod.conf.js",
               "browserTarget": "recipe-client:build:production"
             }
           }
