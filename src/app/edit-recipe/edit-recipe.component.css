@@ -1,0 +1,151 @@
+.recipe-bg {
+    width: 100%;
+    height: 45vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.image-container {
+    height: 100%;
+    width: 100%;
+}
+
+
+.title-box {
+    position: absolute;
+    bottom: 0;
+    background-color: var(--amber);
+    color: var(--white);
+    text-align: center;
+    border-radius: .7rem .7rem 0 0;
+    z-index: 4;
+}
+
+.info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-value {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+
+.quantity mat-icon {
+    color: var(--light);
+    font-size: 1.3rem!important;
+    width: 1.3rem!important;
+    transition: var(--transition);
+    cursor: pointer;
+    border-radius: .3rem;
+}
+
+.quantity mat-icon:hover {
+    background-color: #eee;
+    color: #999;
+    font-size: 1.3rem!important;
+}
+
+.info-key {
+    font-weight: 500;
+    color: var(--amber);
+}
+
+.info-box {
+    border-radius: 0 0 .7rem .7rem;
+    box-shadow: var(--shadow);
+}
+
+.title-input {
+    background: transparent;
+    border: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.category-input {
+    font-size: 1.5rem;
+    font-weight: 500;
+    width: fit-content;
+}
+
+.ingredient-group-title, h3 {
+    color: var(--dark-amber);
+    font-weight: 600;
+    font-size: 1.75rem;
+}
+
+.invisible-input {
+    background: transparent;
+    border: 1px transparent solid;
+    border-radius: 5px;
+    padding: .2rem .8rem;
+    margin: 2px 0;
+}
+
+.invisible-input:hover {
+    border-color: #eee;
+}
+
+.invisible-input:focus {
+    border-color: #ccc;
+}
+
+.new-ingredient {
+    text-align: left;
+    color: #777;
+    cursor: text;
+}
+
+.ingredient {
+    display: flex;
+    align-items: center;
+}
+
+.ingredient-group .mat-icon {
+    opacity: 0;
+    color: #999;
+    transition: var(--transition);
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.ingredient:hover .mat-icon, .ingredient-group>div:hover>.mat-icon {
+    opacity: 1;
+}
+
+.ingredient-group .mat-icon:hover {
+    color: var(--red);
+}
+
+.save {
+    font-size: 1.3rem;
+    background-color: var(--amber);
+    color: white;
+    border-radius: 1.5rem;
+    padding: .3rem 1.2rem;
+    height: 3rem;
+    line-height: 0;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 11;
+    border: 0;
+}
+
+.save:hover {
+    background-color: var(--amber-hover);
+}
+
+.save span {
+    margin-left: 1rem;
+}

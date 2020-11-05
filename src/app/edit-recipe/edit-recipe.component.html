@@ -1,0 +1,85 @@
+<app-loading *ngIf="loading"></app-loading>
+<form class="container-fluid" [formGroup]="form" #formElement>
+    <div class="row">
+        <div class="recipe-bg">
+            <div class="image-container cover">
+                <img [src]="image.value" alt="">
+            </div>
+            <div class="col-11 col-md-4 title-box p-3">
+                <textarea formControlName="name" type="text" class="title-input" placeholder="Recept neve..." rows="1"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center top-box">
+        <div class="col-11 col-md-4">
+            <div class="info-box row">
+                <div class="col-6">
+                    <div class="quantity d-flex align-items-center justify-content-center w-100">
+                        <mat-icon (click)="decreaseQuantity()">remove</mat-icon>
+                        <div class="info">
+                            <span class="info-value">{{quantity}}</span>
+                            <span class="info-key">főre</span>
+                        </div>
+                        <mat-icon (click)="increaseQuantity()">add</mat-icon>
+                    </div>
+                </div>
+                <div class="col-6 info">
+                    <select name="category" formControlName="category" class="form-control category-input">
+                        <option value="MAIN">Főétel</option>
+                        <option value="BREAKFAST">Reggeli</option>
+                        <option value="DESSERT">Desszert</option>
+                        <option value="OTHER">Egyéb</option>
+                    </select>
+                    <span class="info-key">kategória</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="form-group col-12">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Kép URL</div>
+                    </div>
+                    <input name="imageUrl" formControlName="imageUrl" onclick="this.select();"type="text" class="form-control" placeholder="Kép URL..." #image>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-5" formArrayName="ingredientGroups">
+                <div class="ingredient-group" [formGroupName]="i" *ngFor="let input of ingredientGroups.controls; let i=index">
+                    <div class="d-flex align-items-center">
+                        <input type="text" class="invisible-input ingredient-group-title" formControlName="name">
+                        <mat-icon (click)="removeIngredientGroup(i)">close</mat-icon>
+                    </div>
+                    <div class="ingredients pl-4 pb-2">
+                        <div class="real-ingredients" formArrayName="ingredients">
+                            <div class="ingredient" *ngFor="let ingredient of getControls(i); let j=index">
+                                <input 
+                                    type="text" 
+                                    class="invisible-input" 
+                                    [formControlName]="j">
+                                <mat-icon (click)="removeIngredient(i, j)">close</mat-icon>
+                            </div>
+                        </div>
+                        <button type="text" class="form-control new-ingredient" (click)="addNewIngredient(i)">Új hozzávaló...</button>
+                    </div>
+                </div>
+                <button type="text" class="form-control new-ingredient" (click)="addNewIngredientGroup()">Új hozzávaló csoport...</button>
+            </div>
+            <div class="col-12 col-md-7 mt-2">
+                <h3>Leírás</h3>
+                <textarea 
+                    class="instruction invisible-input w-100" 
+                    formControlName="instructions" 
+                    autosize></textarea>
+                <div class="d-flex w-100 justify-content-end">
+                    <button class="save mt-3" (click)="save()"><mat-icon>save</mat-icon><span>Mentés</span></button>
+                </div>
+            </div>
+            </div>
+        </div>
+</form>

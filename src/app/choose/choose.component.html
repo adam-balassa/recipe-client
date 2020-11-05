@@ -1,0 +1,67 @@
+<app-loading *ngIf="!recipe"></app-loading>
+<div class="container-fluid">
+    <div class="row">
+        <div class="bg">
+            <div class="image-container cover">
+                <img src="/assets/choose-bg.jpg" alt="">
+            </div>
+            <div class="col-11 col-md-4 title-box p-3">
+                <h1>Mit főzzek?</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center top-box">
+        <div class="col-11 col-md-4">
+            <div class="info-box row justify-content-center">
+                <form class="col-10 info" ngForm>
+                    <select name="category" [(ngModel)]="category" name="category" class="form-control category-input">
+                        <option value="MAIN">Főétel</option>
+                        <option value="BREAKFAST">Reggeli</option>
+                        <option value="DESSERT">Desszert</option>
+                        <option value="OTHER">Egyéb</option>
+                    </select>
+                    <span class="info-key">kategória</span>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="recipe-container recipe col-md-4" [routerLink]="['/recipe', recipe.id]" *ngIf="recipe">
+            <div class="container-fluid d-flex flex-column">
+                <div class="row h-100">
+                    <div class="recipe-bg">
+                        <div class="image-container cover">
+                            <img [src]="recipe.imageUrl" [alt]="recipe.name">
+                        </div>
+                        <div class="col-10 title-box pt-3 px-3 pb-1">
+                            <h3>{{ recipe.name }}</h3>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-10">
+                        <div class="info-box row">
+                            <div class="col-6">
+                                <div class="quantity d-flex align-items-center justify-content-center w-100">
+                                    <div class="info">
+                                        <span class="info-key"><mat-icon>people_alt</mat-icon></span>
+                                        <span class="info-value">{{recipe.quantity}}</span>
+                                        <span *ngIf="recipe.quantity2">- {{recipe.quantity2}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 info">
+                                <span class="info-key" style="color: var(--dark-amber)"><mat-icon>category</mat-icon></span>
+                                <span class="info-value">{{recipe.category|category}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <button class="new mt-3" (click)="generateNewRecipe()"><mat-icon>refresh</mat-icon><span>Inkább valami mást!</span></button>
+    </div>
+</div>
