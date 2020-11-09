@@ -125,9 +125,8 @@
     color: var(--red);
 }
 
-.save {
+.button {
     font-size: 1.3rem;
-    background-color: var(--amber);
     color: white;
     border-radius: 1.5rem;
     padding: .3rem 1.2rem;
@@ -142,10 +141,15 @@
     border: 0;
 }
 
+.save {
+    background-color: var(--amber);
+}
+
 .save:hover {
     background-color: var(--amber-hover);
 }
 
-.save span {
+
+.button span {
     margin-left: 1rem;
 }

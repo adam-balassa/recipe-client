@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { Recipe, RecipeHeader } from '../model/model';
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,15 @@ export class ApiService {
     return this.http.post<Recipe>(`${this.API}/recipe`, recipe);
   }
 
+  addSKRecipe(url: string): Observable<Recipe> {
+    return this.http.post<Recipe>(`${this.API}/recipe/streetkitchen`, {url});
+  }
+
   updateRecipe(recipe: Recipe): Observable<Recipe> {
     return this.http.put<Recipe>(`${this.API}/recipe/${recipe.id}`, recipe);
+  }
+
+  deleteRecipe(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.API}/recipe/${id}`);
   }
 }

@@ -19,6 +19,7 @@
     </div>
     <div class="container">
         <div class="recipes row mt-5">
+            <h3 class="mt-5" *ngIf="recipes && recipes.length === 0">Nincsenek receptek</h3>
             <div *ngFor="let recipe of recipes" class="recipe-container col-md-4" [routerLink]="['/recipe', recipe.id]">
                 <div class="container-fluid d-flex flex-column">
                     <div class="row h-100">

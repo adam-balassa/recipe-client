@@ -6,7 +6,7 @@
                 <img [src]="image.value" alt="">
             </div>
             <div class="col-11 col-md-4 title-box p-3">
-                <textarea formControlName="name" type="text" class="title-input" placeholder="Recept neve..." rows="1"></textarea>
+                <textarea autosize formControlName="name" type="text" class="title-input" placeholder="Recept neve..." rows="1"></textarea>
             </div>
         </div>
     </div>
@@ -77,7 +77,8 @@
                     formControlName="instructions" 
                     autosize></textarea>
                 <div class="d-flex w-100 justify-content-end">
-                    <button class="save mt-3" (click)="save()"><mat-icon>save</mat-icon><span>Mentés</span></button>
+                    <button *ngIf="!isNew" class="button btn-danger mt-3 mr-2" (click)="delete()"><mat-icon>delete</mat-icon><span>Recept törlése</span></button>
+                    <button class="button save mt-3" (click)="save()"><mat-icon>save</mat-icon><span>Mentés</span></button>
                 </div>
             </div>
             </div>

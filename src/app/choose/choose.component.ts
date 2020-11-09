@@ -10,13 +10,14 @@ import { ApiService } from '../service/api.service';
 export class ChooseComponent implements OnInit {
 
   allRecipes: RecipeHeader[];
-  recipe: RecipeHeader | null = null;
+  recipe: RecipeHeader | null;
   constructor(private api: ApiService) { }
 
   category: string = 'MAIN';
 
   ngOnInit(): void {
     this.api.getRecipes().subscribe(recipes => {
+      this.recipe = null;
       this.allRecipes = recipes;
       this.generateRecipe();
     });
@@ -24,13 +25,17 @@ export class ChooseComponent implements OnInit {
 
   generateRecipe(): void {
     const recipes = this.allRecipes.filter(recipe => recipe.category === this.category);
+    if (recipes.length === 0) {
+      this.recipe = null;
+      return;
+    }
     const index = Math.round((Math.random() * recipes.length - 0.5));
     this.recipe = recipes[index];
     setTimeout(() => window.scroll(0, document.body.scrollHeight), 10);
   }
 
   generateNewRecipe(): void {
-    this.recipe = null;
+    this.recipe = undefined;
     setTimeout(() => this.generateRecipe(), 1000);
   }
 

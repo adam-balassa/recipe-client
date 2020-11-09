@@ -110,7 +110,16 @@ export class EditRecipeComponent implements OnInit {
     this.ingredientGroups.removeAt(groupIndex);
   }
 
-  save() {
+  delete(): void {
+    const result = window.confirm('Biztos törölni szeretnéd ezt a receptet?');
+    if (result) {
+      this.api.deleteRecipe(this.id).subscribe(() => {
+        this.router.navigateByUrl('/');
+      });
+    }
+  }
+
+  save(): void {
     this.loading = true;
     const recipe: Recipe = {
       id: this.isNew ? undefined : this.id,
