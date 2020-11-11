@@ -132,4 +132,8 @@ h3 {
     .edit span {
         display: none;
     }
+
+    .edit {
+        top: 4rem;
+    }
 }
