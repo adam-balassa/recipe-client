@@ -23,6 +23,10 @@ export class ApiService {
     return this.http.get<Recipe>(`${this.API}/recipe/${id}`);
   }
 
+  getSimilarRecipes(id: number): Observable<RecipeHeader[]> {
+    return this.http.get<RecipeHeader[]>(`${this.API}/recipe/${id}/similar`);
+  }
+
   addRecipe(recipe: Recipe): Observable<Recipe> {
     return this.http.post<Recipe>(`${this.API}/recipe`, recipe);
   }
