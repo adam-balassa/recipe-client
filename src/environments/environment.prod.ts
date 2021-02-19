@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'https://recipe-server-spring.herokuapp.com'
+  api: 'https://api.violartstudio.com'
 };
