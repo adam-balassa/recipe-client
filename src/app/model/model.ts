@@ -1,5 +1,5 @@
 export interface RecipeHeader {
-    id?: number;
+    id?: string;
     name: string;
     imageUrl: string;
     quantity: number;

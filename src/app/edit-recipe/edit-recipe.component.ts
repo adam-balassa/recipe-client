@@ -15,7 +15,7 @@ export class EditRecipeComponent implements OnInit {
   @ViewChild('formElement') formElement: ElementRef<HTMLFormElement>;
   form: FormGroup;
   isNew = false;
-  id: number | null = null;
+  id: string | null = null;
   quantity = 1;
   constructor(private api: ApiService, private link: ActivatedRoute, private router: Router) { }
 
@@ -36,7 +36,7 @@ export class EditRecipeComponent implements OnInit {
     }
     else {
       this.loading = true;
-      this.id = parseInt(this.link.snapshot.paramMap.get('id'), 10);
+      this.id = this.link.snapshot.paramMap.get('id');
       this.api.getRecipe(this.id).subscribe(recipe => {
         this.loading = false;
         this.quantity = recipe.quantity;

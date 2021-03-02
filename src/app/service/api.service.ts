@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Recipe, RecipeHeader } from '../model/model';
 @Injectable({
@@ -15,15 +16,17 @@ export class ApiService {
   }
 
   filterRecipes(keywords: string[]): Observable<RecipeHeader[]> {
-    const params = { keywords: keywords.join(',') };
-    return this.http.get<RecipeHeader[]>(`${this.API}/recipe/filter`, { params });
+    return this.getRecipes()
+      .pipe(
+        filter((value: RecipeHeader[], index: number) => keywords.some(keyword => value[index].name.includes(keyword)))
+      );
   }
 
-  getRecipe(id: number): Observable<Recipe> {
+  getRecipe(id: string): Observable<Recipe> {
     return this.http.get<Recipe>(`${this.API}/recipe/${id}`);
   }
 
-  getSimilarRecipes(id: number): Observable<RecipeHeader[]> {
+  getSimilarRecipes(id: string): Observable<RecipeHeader[]> {
     return this.http.get<RecipeHeader[]>(`${this.API}/recipe/${id}/similar`);
   }
 
@@ -32,14 +35,14 @@ export class ApiService {
   }
 
   addSKRecipe(url: string): Observable<Recipe> {
-    return this.http.post<Recipe>(`${this.API}/recipe/streetkitchen`, {url});
+    return this.http.post<Recipe>(`${this.API}/recipe/streetkitchen`, { url });
   }
 
   updateRecipe(recipe: Recipe): Observable<Recipe> {
     return this.http.put<Recipe>(`${this.API}/recipe/${recipe.id}`, recipe);
   }
 
-  deleteRecipe(id: number): Observable<void> {
+  deleteRecipe(id: string): Observable<void> {
     return this.http.delete<void>(`${this.API}/recipe/${id}`);
   }
 }

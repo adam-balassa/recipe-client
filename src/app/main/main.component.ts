@@ -43,7 +43,8 @@ export class MainComponent implements OnInit {
     this.keywordString = this.query;
     const keywords = this.keywordString.split(' ');
     if (this.keywordString.length > 0) {
-      this.api.filterRecipes(keywords).subscribe(recipes => this.recipes = recipes);
+      this.api.filterRecipes(keywords).subscribe(recipes => {this.recipes = recipes; console.log(recipes);
+      });
     } else {
       this.recipes = this.allRecipes;
     }
