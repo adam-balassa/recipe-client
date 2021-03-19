@@ -29,5 +29,4 @@ jobs:
       run: npm run build:prod
 
     - name: Deploy
-      run: |
-        aws s3 sync dist s3://recipe-app-objects/www
+      run: aws s3 sync dist s3://recipe-client --acl public-read --delete
