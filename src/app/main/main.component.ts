@@ -39,7 +39,6 @@ export class MainComponent implements OnInit {
       return;
     }
     console.log(this.query);
-    
     this.keywordString = this.query;
     const keywords = this.keywordString.split(' ');
     if (this.keywordString.length > 0) {
