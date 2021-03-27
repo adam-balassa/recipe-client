@@ -146,6 +146,13 @@ export class EditRecipeComponent implements OnInit {
     }
   }
 
+  uploadImage(files: FileList) {
+    const file: File = files.item(0)
+    this.api.uploadFile(file).subscribe(({imageUrl}) => {
+      this.form.get('imageUrl').setValue(imageUrl);
+    });
+  }
+
   private ingredientFromString(str: string): Ingredient {
     const digits = str.match(/^([\d\.]+)?([-\s]+(\d+))?(.+$)/i);
     if (digits) {

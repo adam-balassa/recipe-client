@@ -34,6 +34,12 @@ export class ApiService {
     return this.http.post<Recipe>(`${this.API}/recipe`, recipe);
   }
 
+  uploadFile(image: File): Observable<{imageUrl: string}> {
+    const formData: FormData = new FormData();
+    formData.append('imageFile', image, image.name);
+    return this.http.post<{imageUrl: string}>(`${this.API}/recipe/image`, formData);
+  }
+
   addSKRecipe(url: string): Observable<Recipe> {
     return this.http.post<Recipe>(`${this.API}/recipe/streetkitchen`, { url });
   }
