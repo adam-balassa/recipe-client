@@ -128,3 +128,7 @@
 .new span {
     margin-left: 1rem;
 }
+
+.is-vegetarian {
+    margin: .4rem 0;
+}

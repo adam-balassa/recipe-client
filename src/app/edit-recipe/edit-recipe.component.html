@@ -13,8 +13,8 @@
     <div class="row justify-content-center top-box">
         <div class="col-11 col-md-4">
             <div class="info-box row">
-                <div class="col-6">
-                    <div class="quantity d-flex align-items-center justify-content-center w-100">
+                <div class="col-4">
+                    <div class="d-flex align-items-center justify-content-center w-100">
                         <mat-icon (click)="decreaseQuantity()">remove</mat-icon>
                         <div class="info">
                             <span class="info-value">{{quantity}}</span>
@@ -23,7 +23,7 @@
                         <mat-icon (click)="increaseQuantity()">add</mat-icon>
                     </div>
                 </div>
-                <div class="col-6 info">
+                <div class="col-5 info">
                     <select name="category" formControlName="category" class="form-control category-input">
                         <option value="MAIN">Főétel</option>
                         <option value="BREAKFAST">Reggeli</option>
@@ -31,6 +31,13 @@
                         <option value="OTHER">Egyéb</option>
                     </select>
                     <span class="info-key">kategória</span>
+                </div>
+                <div class="col-3 info">
+                    <mat-slide-toggle
+                        class="is-vegetarian"
+                        formControlName="isVegetarian">
+                    </mat-slide-toggle>
+                    <span class="info-key">vegetáriánus</span>
                 </div>
             </div>
         </div>

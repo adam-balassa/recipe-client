@@ -12,8 +12,8 @@
     </div>
     <div class="row justify-content-center top-box">
         <div class="col-11 col-md-4">
-            <div class="info-box row justify-content-center">
-                <form class="col-10 info" ngForm>
+            <form class="info-box row justify-content-center">
+                <div class="col-7 info" ngForm>
                     <select name="category" [(ngModel)]="category" name="category" class="form-control category-input">
                         <option value="MAIN">Főétel</option>
                         <option value="BREAKFAST">Reggeli</option>
@@ -21,8 +21,16 @@
                         <option value="OTHER">Egyéb</option>
                     </select>
                     <span class="info-key">kategória</span>
-                </form>
-            </div>
+                </div>
+                <div class="col-3 info">
+                    <mat-slide-toggle
+                        class="is-vegetarian"
+                        name="is-vegetarian"
+                        [(ngModel)]="isVegetarian">
+                    </mat-slide-toggle>
+                    <span class="info-key">vegetáriánus</span>
+                </div>
+            </form>
         </div>
     </div>
     <div class="row justify-content-center mt-5">

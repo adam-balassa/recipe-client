@@ -31,7 +31,8 @@ export class EditRecipeComponent implements OnInit {
           ingredients: []
         } ],
         quantity: this.quantity,
-        category: 'MAIN'
+        category: 'MAIN',
+        isVegetarian: false
       });
     }
     else {
@@ -55,7 +56,8 @@ export class EditRecipeComponent implements OnInit {
         ingredients: new FormArray(group.ingredients.map<FormControl>(ingredient =>
           new FormControl(`${ingredient.quantity ? ingredient.quantity : ''}${ingredient.quantity2 ? ' - ' + ingredient.quantity2 : ''} ${ingredient.name}`)))
       }))),
-      instructions: new FormControl(recipe.instructions.join('\n'))
+      instructions: new FormControl(recipe.instructions.join('\n')),
+      isVegetarian: new FormControl(recipe.isVegetarian)
     });
   }
 
@@ -131,7 +133,8 @@ export class EditRecipeComponent implements OnInit {
       ingredientGroups: this.ingredientGroups.controls.map((group, i) => ({
         name: group.get('name').value,
         ingredients: this.getIngredients(i).controls.map(control => this.ingredientFromString(control.value))
-      }))
+      })),
+      isVegetarian: this.form.get('isVegetarian').value
     };
     if (this.isNew) {
       this.api.addRecipe(recipe).subscribe(r => {

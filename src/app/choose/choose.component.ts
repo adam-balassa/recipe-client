@@ -14,6 +14,7 @@ export class ChooseComponent implements OnInit {
   constructor(private api: ApiService) { }
 
   category: string = 'MAIN';
+  isVegetarian: boolean = false;
 
   ngOnInit(): void {
     this.api.getRecipes().subscribe(recipes => {
@@ -24,7 +25,10 @@ export class ChooseComponent implements OnInit {
   }
 
   generateRecipe(): void {
-    const recipes = this.allRecipes.filter(recipe => recipe.category === this.category);
+    const recipes = this.allRecipes.filter(recipe =>
+      recipe.category === this.category
+      && recipe.isVegetarian === this.isVegetarian);
+
     if (recipes.length === 0) {
       this.recipe = null;
       return;
