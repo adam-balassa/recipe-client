@@ -149,8 +149,8 @@ export class EditRecipeComponent implements OnInit {
     }
   }
 
-  uploadImage(files: FileList) {
-    const file: File = files.item(0)
+  uploadImage(files: FileList): void {
+    const file: File = files.item(0);
     this.api.uploadFile(file).subscribe(({imageUrl}) => {
       this.form.get('imageUrl').setValue(imageUrl);
     });

@@ -41,8 +41,8 @@ export class MainComponent implements OnInit {
     this.keywordString = this.query;
     const keywords = this.keywordString.split(' ');
     if (this.keywordString.length > 0) {
-      this.recipes = this.allRecipes.filter(recipe => 
-        keywords.some(keyword => 
+      this.recipes = this.allRecipes.filter(recipe =>
+        keywords.some(keyword =>
           recipe.name.toLowerCase().includes(keyword.toLowerCase())
         )
       );
