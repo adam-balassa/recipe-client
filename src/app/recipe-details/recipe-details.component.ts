@@ -25,12 +25,12 @@ export class RecipeDetailsComponent implements OnInit {
     });
   }
 
-  decreaseQuantity() {
-
+  decreaseQuantity(): void {
+    // do nothing
   }
 
-  increaseQuantity() {
-
+  increaseQuantity(): void {
+    // do nothing
   }
 
 }

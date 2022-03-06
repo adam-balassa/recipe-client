@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'https://teo-recipe.herokuapp.com'
+  api: 'http://localhost:8080'
 };
 
 /*

@@ -38,13 +38,14 @@ export class MainComponent implements OnInit {
       this.interval = null;
       return;
     }
-    console.log(this.query);
-    
     this.keywordString = this.query;
     const keywords = this.keywordString.split(' ');
     if (this.keywordString.length > 0) {
-      this.api.filterRecipes(keywords).subscribe(recipes => {this.recipes = recipes; console.log(recipes);
-      });
+      this.recipes = this.allRecipes.filter(recipe => 
+        keywords.some(keyword => 
+          recipe.name.toLowerCase().includes(keyword.toLowerCase())
+        )
+      );
     } else {
       this.recipes = this.allRecipes;
     }

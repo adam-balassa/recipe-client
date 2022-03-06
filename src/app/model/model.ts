@@ -5,6 +5,7 @@ export interface RecipeHeader {
     quantity: number;
     quantity2?: number;
     category: 'MAIN' | 'BREAKFAST' | 'DESSERT' | 'OTHER';
+    isVegetarian: boolean;
 }
 
 export interface Recipe extends RecipeHeader {

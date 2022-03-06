@@ -18,7 +18,7 @@
     <div class="row justify-content-center top-box">
         <div class="col-9 col-md-4">
             <div class="info-box row">
-                <div class="col-6">
+                <div [ngClass]="{'col-4': recipe.isVegetarian, 'col-6': !recipe.isVegetarian}">
                     <div class="quantity d-flex align-items-center justify-content-center w-100">
                         <mat-icon (click)="decreaseQuantity()">remove</mat-icon>
                         <div class="info">
@@ -31,9 +31,13 @@
                         <mat-icon (click)="increaseQuantity()">add</mat-icon>
                     </div>
                 </div>
-                <div class="col-6 info">
+                <div class="info" [ngClass]="{'col-4': recipe.isVegetarian, 'col-6': !recipe.isVegetarian}">
                     <span class="info-value">{{recipe.category | category}}</span>
                     <span class="info-key">kategória</span>
+                </div>
+                <div class="col-4 info vegetarian" *ngIf="recipe.isVegetarian">
+                    <span class="info-value"><mat-icon>local_florist</mat-icon></span>
+                    <span class="info-key">vegetáriánus</span>
                 </div>
             </div>
         </div>

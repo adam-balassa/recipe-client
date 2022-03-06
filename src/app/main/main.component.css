@@ -92,10 +92,10 @@
     box-shadow: var(--shadow);
     background-color: #fafafa;
     font-size: .8rem;
+    padding: .3rem 0;
 }
 
 .info {
-    padding: .3rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,4 +103,9 @@
 
 .info-value {
     font-weight: 500;
+}
+
+.is-vegatartian {
+    display: flex;
+    justify-content: center;
 }

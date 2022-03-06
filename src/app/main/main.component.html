@@ -36,7 +36,7 @@
                     <div class="row justify-content-center">
                         <div class="col-10">
                             <div class="info-box row">
-                                <div class="col-6">
+                                <div [ngClass]="{'col-4': recipe.isVegetarian, 'col-6': !recipe.isVegetarian}">
                                     <div class="quantity d-flex align-items-center justify-content-center w-100">
                                         <div class="info">
                                             <span class="info-key"><mat-icon>people_alt</mat-icon></span>
@@ -45,9 +45,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-6 info">
+                                <div [ngClass]="{'col-4': recipe.isVegetarian, 'col-6': !recipe.isVegetarian}">
                                     <span class="info-key" style="color: var(--dark-amber)"><mat-icon>category</mat-icon></span>
                                     <span class="info-value">{{recipe.category|category}}</span>
+                                </div>
+                                <div *ngIf="recipe.isVegetarian" class="col-4 is-vegatartian">
+                                    <span class="info-key" style="color: var(--green)"><mat-icon>local_florist</mat-icon></span>
+                                    <span>Vega</span>
                                 </div>
                             </div>
                         </div>
