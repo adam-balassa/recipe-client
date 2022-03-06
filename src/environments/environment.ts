@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'https://api.violartstudio.com'
+  api: 'https://teo-recipe.herokuapp.com'
 };
 
 /*
